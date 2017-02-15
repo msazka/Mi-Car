@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MiCar</string>
     <string name="facebook_app_id">1290925290978760</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

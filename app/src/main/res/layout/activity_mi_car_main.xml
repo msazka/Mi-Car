@@ -17,13 +17,13 @@
         android:text="Be a Smart Car Owner"
         android:gravity="center"
         android:textSize="16dip"/>
-    <ImageView android:src="@drawable/micar"
+   <!-- <ImageView android:src="@drawable/micar"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:layout_alignBottom="@+id/link_"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="59dp" />
+        android:layout_marginBottom="59dp" />-->
     <TextView android:id="@+id/link_"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
