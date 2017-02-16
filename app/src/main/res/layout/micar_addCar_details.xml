@@ -1,0 +1,240 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/details_heading"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="Enter Car Details:"
+            tools:textSize="15sp"
+            android:paddingTop="50dp"
+            android:paddingBottom="30dp">
+      </TextView>
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TableRow
+                android:id="@+id/regNoRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="5dip" >
+
+                <TextView
+                android:id="@+id/regNo"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reg. #:"
+                tools:textSize="15sp"
+                android:textAppearance="@style/TextAppearance.AppCompat" />
+
+                <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText_regNo"
+                android:textSize="15sp"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                     android:inputType="text" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/modelRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="5dip" >
+
+                <TextView
+                    android:id="@+id/model"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Model:"
+                    tools:textSize="15sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText_model"
+                    android:textSize="15sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:inputType="text"
+                    />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/makeRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="5dip" >
+
+                <TextView
+                    android:id="@+id/make"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Make:"
+                    tools:textSize="15sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText_make"
+                    android:layout_toRightOf="@+id/make"
+                    android:textSize="15sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:inputType="text"
+                    />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/modelyearRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="5dip" >
+
+                <TextView
+                    android:id="@+id/modelyear"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Model Year:"
+                    tools:textSize="15sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText_modelyear"
+                    android:textSize="15sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:inputType="date"
+                    />
+                </TableRow>
+
+            <TableRow
+                android:id="@+id/colorRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="5dip" >
+
+                <TextView
+                    android:id="@+id/color"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Color:"
+                    tools:textSize="15sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_colorSelect"
+                    />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/regcityRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="5dip" >
+
+                <TextView
+                    android:id="@+id/regcity"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registered City:"
+                    tools:textSize="15sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText_regcity"
+                    android:textSize="15sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:inputType="text"
+                    />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/engineCapacRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="5dip" >
+
+                <TextView
+                    android:id="@+id/engineCapac"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Engine Capacity:"
+                    tools:textSize="15sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText_engineCapac"
+                    android:textSize="15sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:inputType="text"
+                    />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/engineTypeRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="5dip" >
+
+                <TextView
+                    android:id="@+id/engineType"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Engine Type:"
+                    tools:textSize="15sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText_engineType"
+                    android:textSize="15sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:inputType="text"
+                    />
+            </TableRow>
+       </TableLayout>
+
+        <Button
+            android:text="Add Car"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAddCar"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+</ScrollView>
