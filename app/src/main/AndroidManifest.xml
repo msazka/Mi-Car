@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme">
 
         <!-- <activity android:name=".MiCarMainActivity"> -->
-        <activity android:name=".MiCarAddDetails">
+        <activity android:name=".MiCarMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
