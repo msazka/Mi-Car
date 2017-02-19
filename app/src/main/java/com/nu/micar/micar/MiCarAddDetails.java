@@ -11,7 +11,7 @@ public class MiCarAddDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.micar_addcar_details);
+        setContentView(R.layout.micar_addCar_details);
 
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner_colorSelect);
