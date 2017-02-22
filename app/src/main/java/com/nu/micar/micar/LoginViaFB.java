@@ -2,6 +2,8 @@ package com.nu.micar.micar;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 
 public class LoginViaFB extends AppCompatActivity {
 
@@ -10,4 +12,10 @@ public class LoginViaFB extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_via_fb);
     }
+
+    
 }
+
+
+
+
