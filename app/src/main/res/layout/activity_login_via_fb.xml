@@ -12,7 +12,7 @@
     tools:context="com.nu.micar.micar.LoginViaFB">
 
     <TextView
-        android:text="Facebook"
+        android:text="Facebook_test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

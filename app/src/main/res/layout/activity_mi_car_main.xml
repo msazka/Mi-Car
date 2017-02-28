@@ -9,12 +9,34 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nu.micar.micar.MiCarMainActivity">
-
+    <TextView android:id="@+id/link_welcome"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="15dp"
+        android:text="Be a Smart Car Owner"
+        android:gravity="center"
+        android:textSize="16dip"/>
+   <!-- <ImageView android:src="@drawable/micar"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignBottom="@+id/link_"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="59dp" />-->
+    <TextView android:id="@+id/link_"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="15dp"
+        android:text="MiCar"
+        android:gravity="center"
+        android:textSize="48dip"/>
     <Button
         android:text="Sign up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/SignUp"
         android:layout_below="@+id/SignIn"
         android:layout_alignParentLeft="true"
@@ -30,7 +52,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="91dp"
+        android:layout_marginTop="350dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 </RelativeLayout>

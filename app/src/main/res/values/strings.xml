@@ -1,4 +1,32 @@
 <resources>
     <string name="app_name">MiCar</string>
-    <string name="facebook_app_id">1290925290978760</string>
+
+    <string name="fb_login_protocol_scheme">fb1300765116628381</string>
+    <string name="facebook_app_id">1300765116628381</string>
+
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_micar_enter_details">micar_enter_details</string>
+    <string name="search_title">Search Cars</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+    "Test"
+    </string>
+
+    <string name="lorem_ipsum">abcdef</string>
+    <string name="action_settings">Settings</string>
+    <string name="scroll">Scroll to the bottom to see the ListView</string>
+    <string name="whoops">Whoops, as you can see ListView only shows the first item.</string>
+
+
+        <string-array name="colors_array">
+            <item>Black</item>
+            <item>White</item>
+            <item>Red</item>
+            <item>Blue</item>
+            <item>Grey</item>
+         </string-array>
+
 </resources>
