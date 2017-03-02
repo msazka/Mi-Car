@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nu.micar.micar">
+    package="com.nu.micar">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -17,15 +17,15 @@
         android:theme="@style/AppTheme">
 
         <!-- <activity android:name=".MiCarMainActivity"> -->
-        <activity android:name=".MiCarMainActivity">
+        <activity android:name="com.nu.micar.MiCarMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignIn" />
-        <activity android:name=".LoginViaFB" />
+        <activity android:name=".MicarSignIn" />
+        <activity android:name=".MicarLoginViaFB" />
 
         <uses-permission android:name="android.permission.INTERNET" />
 
@@ -59,13 +59,13 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".ListActivity" />
+        <activity android:name=".MicarListActivity" />
         <activity
-            android:name=".SignUp"
+            android:name=".MicarSignUp"
             android:label="@string/title_activity_sign_up"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MapsActivity"
+            android:name=".MicarMapsActivity"
             android:label="@string/title_activity_maps" />
        <!-- <activity
             android:name=".micar_enter_details"

@@ -1,9 +1,11 @@
-package com.nu.micar.micar;
+package com.nu.micar;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import com.nu.micar.R;
 
 
 public class MiCarAddDetails extends AppCompatActivity {
@@ -11,7 +13,7 @@ public class MiCarAddDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.micar_addcar_details);
+        setContentView(R.layout.activity_micar_addcar_details);
 
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner_colorSelect);
