@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "947148677992",
+    "firebase_url": "https://mi-car-4a4ac.firebaseio.com",
+    "project_id": "mi-car-4a4ac",
+    "storage_bucket": "mi-car-4a4ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947148677992:android:4ef589d6f5ff433d",
+        "android_client_info": {
+          "package_name": "com.nu.micar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "947148677992-m379mo71v5a1p545csctgus52mvm5c0s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nu.micar",
+            "certificate_hash": "a26fd9723b1d8ba38cae852c0c868b635f78c08b"
+          }
+        },
+        {
+          "client_id": "947148677992-ton557ko25s8ehdbed0o7g1pmjsu5p45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNcb_5oLjYrxW69mRDYB7bANVArheE3aM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "947148677992-ton557ko25s8ehdbed0o7g1pmjsu5p45.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

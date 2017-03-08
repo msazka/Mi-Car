@@ -1,6 +1,8 @@
 package com.nu.micar;
 
+
 import android.content.Intent;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,30 +13,35 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestHandle;
 import com.loopj.android.http.RequestParams;
-import com.nu.micar.R;
 
 import cz.msebera.android.httpclient.Header;
 
-public class MicarSignIn extends AppCompatActivity {
+public class MiCarSignIn extends AppCompatActivity{
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_micar_sign_in);
 
-            Button button = (Button) findViewById(R.id.LoginViaFb);
+
+
+        Button button = (Button) findViewById(R.id.LoginViaFb);
+
+
             button.setOnClickListener(new View.OnClickListener()
 
             {
                 public void onClick (View v){
-                Intent intent = new Intent(MicarSignIn.this, MicarLoginViaFB.class);
+                Intent intent = new Intent(MiCarSignIn.this, MicarLoginViaFB.class);
                 startActivity(intent);
                 // Perform action on click
             }
             }
-
             );
-        };
+
+        }
 
     public void loginUser(View view){
         AsyncHttpClient client = new AsyncHttpClient();
@@ -53,5 +60,8 @@ public class MicarSignIn extends AppCompatActivity {
             }
 
         });
-    };
+    }
+
+
+
 }
