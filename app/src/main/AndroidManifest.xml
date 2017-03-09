@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MiCarSignIn" />
-        <activity android:name=".MicarLoginViaFB" />
+        <activity android:name=".MiCarLoginViaFB" />
 
         <uses-permission android:name="android.permission.INTERNET" />
 
@@ -66,13 +66,13 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".MicarListActivity" />
+        <activity android:name=".MiCarListActivity" />
         <activity
-            android:name=".MicarSignUp"
+            android:name=".MiCarSignUp"
             android:label="@string/title_activity_sign_up"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MicarMapsActivity"
+            android:name=".MiCarMapsActivity"
             android:label="@string/title_activity_maps" />
         <!--
             <activity
