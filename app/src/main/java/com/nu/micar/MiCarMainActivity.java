@@ -27,7 +27,7 @@ public class MiCarMainActivity extends AppCompatActivity {
         Button signup = (Button) findViewById(R.id.SignUp);
         signup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MiCarMainActivity.this, MicarSignUp.class);
+                Intent intent = new Intent(MiCarMainActivity.this, MiCarSignUp.class);
                 startActivity(intent);
                 // Perform action on click
             }
