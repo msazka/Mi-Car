@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "947148677992",
-    "firebase_url": "https://mi-car-4a4ac.firebaseio.com",
-    "project_id": "mi-car-4a4ac",
-    "storage_bucket": "mi-car-4a4ac.appspot.com"
+    "project_number": "218993905643",
+    "firebase_url": "https://mi-car-e35fa.firebaseio.com",
+    "project_id": "mi-car-e35fa",
+    "storage_bucket": "mi-car-e35fa.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:947148677992:android:4ef589d6f5ff433d",
+        "mobilesdk_app_id": "1:218993905643:android:4ef589d6f5ff433d",
         "android_client_info": {
           "package_name": "com.nu.micar"
         }
       },
       "oauth_client": [
         {
-          "client_id": "947148677992-m379mo71v5a1p545csctgus52mvm5c0s.apps.googleusercontent.com",
+          "client_id": "218993905643-49difhu6d2ptcn8rnnbrnm7iu7ash1kc.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.nu.micar",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "947148677992-ton557ko25s8ehdbed0o7g1pmjsu5p45.apps.googleusercontent.com",
+          "client_id": "218993905643-ahro0da721js0ecaf407mg6diudan701.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDNcb_5oLjYrxW69mRDYB7bANVArheE3aM"
+          "current_key": "AIzaSyBG7Kbb5SJuSqIe6o-XXQlI-vQVP0x-drA"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "947148677992-ton557ko25s8ehdbed0o7g1pmjsu5p45.apps.googleusercontent.com",
+              "client_id": "218993905643-ahro0da721js0ecaf407mg6diudan701.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
