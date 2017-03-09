@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.nu.micar.R;
 
-public class MicarSignUp extends AppCompatActivity {
+public class MiCarSignUp extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
