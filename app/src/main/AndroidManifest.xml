@@ -22,7 +22,7 @@
         android:theme="@style/AppTheme">
 
         <!-- <activity android:name=".MiCarMainActivity"> -->
-        <activity android:name=".MiCarMainActivity">
+        <activity android:name=".MiCarSignInFacebook">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -80,9 +80,11 @@
             android:label="@string/title_activity_micar_enter_details"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         -->
+        <!--
         <activity
             android:name=".MiCarSignInGoogle"
             android:label="@string/title_activity_mi_car_sign_in_google"></activity>
+            -->
     </application>
 
 </manifest>
