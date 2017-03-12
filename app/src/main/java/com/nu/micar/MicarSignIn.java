@@ -34,7 +34,7 @@ public class MiCarSignIn extends AppCompatActivity{
 
             {
                 public void onClick (View v){
-                Intent intent = new Intent(MiCarSignIn.this, MicarLoginViaFB.class);
+                Intent intent = new Intent(MiCarSignIn.this, MiCarLoginViaFB.class);
                 startActivity(intent);
                 // Perform action on click
             }

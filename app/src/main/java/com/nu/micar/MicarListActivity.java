@@ -7,7 +7,7 @@ import android.widget.ListView;
 
 import com.nu.micar.R;
 
-public class MicarListActivity extends AppCompatActivity {
+public class MiCarListActivity extends AppCompatActivity {
 
     //protected void onCreate(Bundle savedInstanceState) {
       //  super.onCreate(savedInstanceState);

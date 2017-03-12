@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.nu.micar.R;
 
-public class MicarLoginViaFB extends AppCompatActivity {
+public class MiCarLoginViaFB extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
