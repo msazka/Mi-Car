@@ -22,13 +22,7 @@
         android:theme="@style/AppTheme">
 
         <!-- <activity android:name=".MiCarMainActivity"> -->
-        <activity android:name=".MiCarSignInFacebook">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".MiCarSignIn" />
         <activity android:name=".MiCarLoginViaFB" />
 
@@ -80,11 +74,17 @@
             android:label="@string/title_activity_micar_enter_details"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         -->
-        <!--
         <activity
             android:name=".MiCarSignInGoogle"
             android:label="@string/title_activity_mi_car_sign_in_google"></activity>
-            -->
+
+        <activity android:name=".ExpandableListViewMainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
