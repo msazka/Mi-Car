@@ -2,7 +2,7 @@
     <string name="app_name">MiCar</string>
 
     <string name="fb_login_protocol_scheme">fb1300765116628381</string>
-   <!-- <string name="facebook_app_id">1300765116628381</string>-->
+    <!-- <string name="facebook_app_id">1300765116628381</string>-->
     <string name="facebook_app_id">166807413832400</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_micar_enter_details">micar_enter_details</string>
