@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- <activity android:name=".MiCarMainActivity"> -->
+
 
         <activity android:name=".MiCarSignIn" />
         <activity android:name=".MiCarLoginViaFB" />
@@ -77,8 +77,8 @@
         <activity
             android:name=".MiCarSignInGoogle"
             android:label="@string/title_activity_mi_car_sign_in_google"></activity>
-
-        <activity android:name=".ExpandableListViewMainActivity">
+         <activity android:name=".MiCarMainActivity">
+             <!--<activity android:name=".ExpandableListViewMainActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
