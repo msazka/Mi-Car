@@ -22,10 +22,6 @@
         android:theme="@style/AppTheme">
 
 
-
-        <activity android:name=".MiCarSignIn" />
-        <activity android:name=".MiCarLoginViaFB" />
-
         <uses-permission android:name="android.permission.INTERNET" />
 
         <activity
@@ -60,7 +56,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".MiCarListActivity" />
         <activity
             android:name=".MiCarSignUp"
             android:label="@string/title_activity_sign_up"
