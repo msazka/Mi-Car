@@ -101,4 +101,6 @@
     <string name="id_fmt">User ID: %s</string>
     <string name="email_fmt">Email: %s</string>
 
+    <string name="webservicesurl">https://micar.000webhostapp.com/micar/api/page.php</string>
+
 </resources>
