@@ -21,14 +21,14 @@
 
 
     <application
+        android:name="android.support.multidex.MultiDexApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name="android.support.multidex.MultiDexApplication">
-    <activity android:name=".MiCarSignIn" />
-    <activity android:name=".MiCarLoginViaFB" />
+        android:theme="@style/AppTheme">
+        <activity android:name=".MiCarSignIn" />
+        <activity android:name=".MiCarLoginViaFB" />
 
 
         <uses-permission android:name="android.permission.INTERNET" />
@@ -82,8 +82,8 @@
         <activity
             android:name=".MiCarSignInGoogle"
             android:label="@string/title_activity_mi_car_sign_in_google"></activity>
-         <activity android:name=".MiCarMainActivity">
-             <!--<activity android:name=".ExpandableListViewMainActivity">-->
+        <activity android:name=".Splash">
+            <!--<activity android:name=".ExpandableListViewMainActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -91,9 +91,22 @@
             </intent-filter>
         </activity>
 
+
+        <activity
+            android:name=".MiCarMainActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".DemoMapsActivity"
             android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".DesActivity"
+            android:label="DestinationActivity" />
+
+        <activity android:name=".MainActivity" />
+
 
     </application>
 
