@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fr1"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="Track" />
+
+    <item
+        android:id="@+id/fr2"
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:title="Locate" />
+
+    <item
+        android:id="@+id/fr3"
+        android:icon="@android:drawable/ic_menu_set_as"
+        android:title="Cars" />
+    <!--<item
+        android:id="@+id/go"
+        android:icon="@android:drawable/ic_menu_call"
+        android:title="Go to Other Activity" />-->
+
+ <!--   <item
+        android:id="@+id/close"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="Close this App" />-->
+
+
+    <item
+        android:id="@+id/signout"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="Sign out"  />
+
+</menu>
