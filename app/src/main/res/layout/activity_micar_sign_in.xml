@@ -15,7 +15,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
-        android:text="samia.nouman123@yahoo.com"
         android:ems="10"
         android:id="@+id/input_email"
         android:layout_alignParentTop="true"
@@ -38,7 +37,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:hint="Password"
-        android:text="12345"
         />
     <Button
         android:text="Sign In"
