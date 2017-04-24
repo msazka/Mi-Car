@@ -103,4 +103,7 @@
 
     <string name="webservicesurl">https://micar.000webhostapp.com/micar/api/page.php</string>
 
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+
 </resources>
