@@ -108,16 +108,22 @@ public class MiCarSignIn extends AppCompatActivity {
                                 JSONObject dataObject = new JSONObject(parent.getString("data"));
                                 JSONObject profileObject = new JSONObject(dataObject.getString("profile"));
 
-                               /* sharedPrefData("username", profileObject.getString("samia"));
+                                sharedPrefData("username", profileObject.getString("username"));
                                 sharedPrefData("email", profileObject.getString("email"));
                                 sharedPrefData("password", profileObject.getString("password"));
                                 sharedPrefData("account_type", profileObject.getString("account_type"));
-                                sharedPrefData("session_token", profileObject.getString("session_token"));*/
+                                sharedPrefData("session_token", profileObject.getString("session_token"));
 
                                 showToast(successMessage);
 
 
-                                Intent schoolActivityIntent = new Intent(MiCarSignIn.this, DemoMapsActivity.class);
+                                /*Intent schoolActivityIntent = new Intent(MiCarSignIn.this, DemoMapsActivity.class);
+                                startActivity(schoolActivityIntent);
+                                finish();*/
+
+                                sharedPrefData("IsLogin", "true");
+
+                                Intent schoolActivityIntent = new Intent(MiCarSignIn.this, MainActivity.class);
                                 startActivity(schoolActivityIntent);
                                 finish();
 

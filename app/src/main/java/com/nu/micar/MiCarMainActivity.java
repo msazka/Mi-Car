@@ -46,11 +46,13 @@ public class MiCarMainActivity extends AppCompatActivity implements View.OnClick
         if(id==R.id.SignIn){
             Intent intent = new Intent(MiCarMainActivity.this, MiCarSignIn.class);
                 startActivity(intent);
+            finish();
         }
 
         if(id == R.id.SignUp){
             Intent intent = new Intent(MiCarMainActivity.this, MiCarSignUp.class);
                 startActivity(intent);
+            finish();
         }
 
     }
