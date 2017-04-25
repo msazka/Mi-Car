@@ -33,7 +33,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MiCarSignIn extends AppCompatActivity {
+public class MiCarSignIn extends ParentActivity {
     private static final String TAG = "SIGNINACTIVITY==";
     public static Dialog dialog;
     public static Animation ballAnim;
@@ -184,75 +184,4 @@ public class MiCarSignIn extends AppCompatActivity {
 
         });*/
     }
-
-    /**
-     * ****************************************** hideSoftKeyboard *********************************
-     */
-    protected void hideSoftKeyboard(View view) {
-        try {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    protected void sharedPrefData(String tag, String value) {
-        try {
-            SharedPreferences prefs = PreferenceManager
-                    .getDefaultSharedPreferences(MiCarSignIn.this);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putString(tag, value);
-            editor.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    protected void showToast(String text) {
-        try {
-            Toast.makeText(MiCarSignIn.this, text,
-                    Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    /**
-     * ********************************** hideLoading **********************************************
-     */
-    public static void hideLoading(final Context context) {
-        try {
-            dialog.dismiss();
-        } catch (Exception e) {
-
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * *********************************** showLoading *********************************************
-     */
-    public static void showLoading(final Context context) {
-
-        Handler h = new Handler();
-        h.post(new Runnable() {
-            public void run() {
-                ballAnim = AnimationUtils.loadAnimation(context,
-                        R.anim.ball_rotatation);
-                dialog = new Dialog(context, android.R.style.Theme_Translucent);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.ball_progress_dialog);
-                dialog.setCancelable(false);
-                final ImageView ivBall = (ImageView) dialog
-                        .findViewById(R.id.ivBall);
-                ivBall.startAnimation(ballAnim);
-                dialog.show();
-            }
-        });
-    }
-
-
-
 }
