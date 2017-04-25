@@ -103,7 +103,6 @@ public class MiCarSignUp extends AppCompatActivity {
 
                                 sharedPrefData("IsLogin", "true");
 
-
                                 Intent schoolActivityIntent = new Intent(MiCarSignUp.this, MainActivity.class);
                                 startActivity(schoolActivityIntent);
                                 finish();
