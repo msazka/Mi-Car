@@ -102,7 +102,7 @@ public class MiCarSignUp extends AppCompatActivity {
                                 showToast(successMessage);
 
 
-                                Intent schoolActivityIntent = new Intent(MiCarSignUp.this, DemoMapsActivity.class);
+                                Intent schoolActivityIntent = new Intent(MiCarSignUp.this, MainActivity.class);
                                 startActivity(schoolActivityIntent);
                                 finish();
 
@@ -134,6 +134,7 @@ public class MiCarSignUp extends AppCompatActivity {
                 params.put("email", input_email.getText().toString().trim());
                 params.put("password", input_password.getText().toString().trim());
                 params.put("username", input_username.getText().toString().trim());
+                params.put("account_type", "CUSTOM");
 
                 return params;
             }
