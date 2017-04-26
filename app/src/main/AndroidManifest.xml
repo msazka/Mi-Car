@@ -109,6 +109,8 @@
 
         <activity android:name=".ParentActivity" />
 
+        <activity android:name=".MiCarTrackingonMap" />
+
 
     </application>
 

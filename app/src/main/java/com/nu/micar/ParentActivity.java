@@ -18,6 +18,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Waqar Malik on 26-Apr-17.
  */
@@ -27,8 +30,7 @@ public class ParentActivity extends AppCompatActivity {
 
     public static Animation ballAnim;
     public static Dialog dialog;
-
-    public static String errorMsgAPI = "";
+   // List<RegisterCarModel> registerCarModelsList = new ArrayList<RegisterCarModel>();
 
     /**
      * *********************************** showLoading *********************************************

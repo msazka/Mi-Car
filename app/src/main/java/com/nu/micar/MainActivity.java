@@ -66,6 +66,7 @@ public class MainActivity extends ParentActivity implements NavigationView.OnNav
 
         //change Tab selection when swipe ViewPager
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        viewPager.setOffscreenPageLimit(3);
 
         //change ViewPager page when tab selected
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -133,13 +134,17 @@ public class MainActivity extends ParentActivity implements NavigationView.OnNav
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.addcar:
-                if(getSharedPrefData("device_id_entered").equals("false"))
                 showChangeLangDialog();
-                else {
+                /*if(getSharedPrefData("device_id_entered").equals("true")){
                     Intent intent = new Intent(this, DesActivity.class);
                     intent.putExtra("string", "Go to other Activity by NavigationView item cliked!");
                     startActivity(intent);
+                    finish();
                 }
+
+                else {
+                    showChangeLangDialog();
+                }*/
                 break;
 
         }
@@ -170,8 +175,13 @@ public class MainActivity extends ParentActivity implements NavigationView.OnNav
         dialogBuilder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //do something with edt.getText().toString();
-                sharedPrefData("device_id", et_tracker_id.getText().toString());
-                sharedPrefData("device_id_entered", "true");
+                 sharedPrefData("device_id", et_tracker_id.getText().toString());
+                //sharedPrefData("device_id_entered", "true");
+
+                Intent intent = new Intent(MainActivity.this, DesActivity.class);
+                intent.putExtra("string", "Go to other Activity by NavigationView item cliked!");
+                startActivity(intent);
+                finish();
             }
         });
         dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

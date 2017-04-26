@@ -91,7 +91,7 @@ public class DesActivity extends ParentActivity {
                                                                   showToast(successMessage);
                                                               } else {
 
-                                                                  JSONObject dataObject = new JSONObject(parent.getString("data"));
+                                                                 /* JSONObject dataObject = new JSONObject(parent.getString("data"));
                                                                   JSONObject profileObject = new JSONObject(dataObject.getString("profile"));
 
                                                                   RegisterCarModel carregmodel = new RegisterCarModel();
@@ -111,13 +111,15 @@ public class DesActivity extends ParentActivity {
                                                                   carregmodel.setDate_modified(profileObject.getString("date_modified"));
 
 
-                                                                     registerCarModelsList.add(carregmodel);
+                                                                  registerCarModelsList.add(carregmodel);*/
                                                                   //    mAdapter.notifyDataSetChanged();
 
 
                                                                   showToast(successMessage);
 
-                                                                  sharedPrefData("IsLogin", "true");
+                                                                // finish();
+
+                                                                  //sharedPrefData("IsLogin", "true");
 
                                                                   Intent schoolActivityIntent = new Intent(DesActivity.this, MainActivity.class);
                                                                   startActivity(schoolActivityIntent);
@@ -159,7 +161,8 @@ public class DesActivity extends ParentActivity {
                                                   params.put("color", input_color.getText().toString().trim());
                                                   params.put("registration_city", input_registration_city.getText().toString().trim());
                                                   params.put("engine_capacity", input_engine_capacity.getText().toString().trim());
-                                                  params.put("device_id", getSharedPrefData("session_token"));
+                                                  params.put("engine_type", input_engine_type.getText().toString().trim());
+                                                  params.put("device_id", getSharedPrefData("device_id"));
 
                                                   return params;
                                               }
@@ -179,6 +182,8 @@ public class DesActivity extends ParentActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
+            Intent schoolActivityIntent = new Intent(DesActivity.this, MainActivity.class);
+            startActivity(schoolActivityIntent);
             finish();
         }
         return super.onOptionsItemSelected(item);
@@ -186,6 +191,8 @@ public class DesActivity extends ParentActivity {
 
     @Override
     public void onBackPressed() {
+        Intent schoolActivityIntent = new Intent(DesActivity.this, MainActivity.class);
+        startActivity(schoolActivityIntent);
         finish();
     }
 }
