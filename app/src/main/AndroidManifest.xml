@@ -121,6 +121,7 @@
         <activity
             android:name=".MiCarLocateCarActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".CarUpdateActivity" />
 
 
     </application>

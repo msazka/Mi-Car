@@ -9,7 +9,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
 
-public class MiCarMainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MiCarMainActivity extends ParentActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +44,23 @@ public class MiCarMainActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         int id = v.getId();
         if(id==R.id.SignIn){
-            Intent intent = new Intent(MiCarMainActivity.this, MiCarSignIn.class);
+            if(haveNetworkConnection(MiCarMainActivity.this)){
+                Intent intent = new Intent(MiCarMainActivity.this, MiCarSignIn.class);
                 startActivity(intent);
-            finish();
+                finish();
+            }
+            else showToast("No internet connection");
+
         }
 
         if(id == R.id.SignUp){
-            Intent intent = new Intent(MiCarMainActivity.this, MiCarSignUp.class);
+
+            if(haveNetworkConnection(MiCarMainActivity.this)) {
+                Intent intent = new Intent(MiCarMainActivity.this, MiCarSignUp.class);
                 startActivity(intent);
-            finish();
+                finish();
+            }
+            else showToast("No internet connection");
         }
 
     }

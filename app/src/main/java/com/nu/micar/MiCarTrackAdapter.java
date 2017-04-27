@@ -1,5 +1,6 @@
 package com.nu.micar;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -129,11 +130,20 @@ public class MiCarTrackAdapter extends RecyclerView.Adapter<MiCarTrackAdapter.Vi
         public void onClick(View v) {
             /*Intent intent = new Intent(context, MiCarTrackingonMap.class);
             Bundle extras = new Bundle();
-            extras.putString("deviceid", registerCarModelList.get(getAdapterPosition()).getDevice_id());
+
             extras.putString("regno", registerCarModelList.get(getAdapterPosition()).getRegistration_no());
+            extras.putString("model", registerCarModelList.get(getAdapterPosition()).getModel());
+            extras.putString("modelyear", registerCarModelList.get(getAdapterPosition()).getModel_year());
+            extras.putString("manu", registerCarModelList.get(getAdapterPosition()).getManufacturer());
+            extras.putString("color", registerCarModelList.get(getAdapterPosition()).getColor());
+            extras.putString("regcity", registerCarModelList.get(getAdapterPosition()).getRegistration_city());
+            extras.putString("enginecapacity", registerCarModelList.get(getAdapterPosition()).getEngine_capacity());
+            extras.putString("enginetype", registerCarModelList.get(getAdapterPosition()).getDevice_id());
+            extras.putString("deviceid", registerCarModelList.get(getAdapterPosition()).getDevice_id());
+
             intent.putExtras(extras);
-            context.startActivity(intent);*/
-            //((Activity) context).finish();
+            context.startActivity(intent);
+            ((Activity) context).finish();*/
 
             //  Toast.makeText(RecyclerAdapter.context, "you have clicked Row " + getAdapterPosition(), Toast.LENGTH_LONG).show();
         }

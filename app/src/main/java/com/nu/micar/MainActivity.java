@@ -37,6 +37,10 @@ public class MainActivity extends ParentActivity implements NavigationView.OnNav
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(!haveNetworkConnection(MainActivity.this)){
+            showToast("No Internet Connection");
+        }
+
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
