@@ -28,7 +28,7 @@ public class MiCarCarsAdapter extends RecyclerView.Adapter<MiCarCarsAdapter.View
     }
 
     @Override
-    public MiCarCarsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(
                 R.layout.cars_frag_row_layout, null);
@@ -40,7 +40,7 @@ public class MiCarCarsAdapter extends RecyclerView.Adapter<MiCarCarsAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(MiCarCarsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
 
 
         holder.tv_car_reg_no.setText(registerCarModelList.get(position).getRegistration_no());

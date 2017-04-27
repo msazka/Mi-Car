@@ -14,13 +14,16 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if (position ==0) {
             return new MiCarTrackFragment();
-        } else if (position == 1) {
+        }
+        else if (position == 1) {
+            return new MiCarLockFragment();
+        }else if (position == 2) {
             return new MiCarLocateFragment();
         } else return new MiCarCarsFragment();
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 }

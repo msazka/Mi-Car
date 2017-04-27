@@ -6,6 +6,12 @@
         android:icon="@android:drawable/ic_menu_camera"
         android:title="Track" />
 
+
+    <item
+        android:id="@+id/fr4"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="Lock" />
+
     <item
         android:id="@+id/fr2"
         android:icon="@android:drawable/ic_menu_gallery"
