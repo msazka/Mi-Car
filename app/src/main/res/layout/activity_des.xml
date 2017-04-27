@@ -20,6 +20,86 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="Car Registeration"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/input_regno"
+        android:hint="Registration no"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/input_model"
+        android:hint="Model"
+        />
+
+    <EditText
+        android:id="@+id/input_model_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Model Year"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/input_manufacturer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Manufacturer"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/input_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Color"
+        android:inputType="text" />
+
+
+    <EditText
+        android:id="@+id/input_registration_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Registration city"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/input_engine_capacity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Engine capacity"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/input_engine_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Engine type"
+        android:inputType="text" />
+
+
+    <Button
+        android:text="Register Car"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:id="@+id/btn_car_reg"
+        android:onClick="Register car"
+        android:layout_gravity="center" />
+
 
 </LinearLayout>

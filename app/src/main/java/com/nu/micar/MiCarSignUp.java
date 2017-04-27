@@ -1,23 +1,12 @@
 package com.nu.micar;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -25,15 +14,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.common.SignInButton;
-import com.nu.micar.R;
 
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MiCarSignUp extends AppCompatActivity {
+public class MiCarSignUp extends ParentActivity {
 
     public static Dialog dialog;
     public static Animation ballAnim;
@@ -55,10 +42,10 @@ public class MiCarSignUp extends AppCompatActivity {
 
         Button btn_signup = (Button) findViewById(R.id.btn_signup);
         btn_signup.setOnClickListener(new View.OnClickListener() {
-                                       public void onClick(View v) {
-                                          signupUser();
-                                       }
-                                   }
+                                          public void onClick(View v) {
+                                              signupUser();
+                                          }
+                                      }
         );
 
     }
@@ -67,7 +54,7 @@ public class MiCarSignUp extends AppCompatActivity {
         // Google Volley Post Request
 
 
-      //  hideSoftKeyboard(MiCarSignUp.this);
+        //  hideSoftKeyboard(MiCarSignUp.this);
         showLoading(MiCarSignUp.this);
 
         String url = getResources().getString(R.string.webservicesurl);
@@ -167,72 +154,5 @@ public class MiCarSignUp extends AppCompatActivity {
         });*/
     }
 
-    /**
-     * ****************************************** hideSoftKeyboard *********************************
-     */
-    protected void hideSoftKeyboard(View view) {
-        try {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    protected void sharedPrefData(String tag, String value) {
-        try {
-            SharedPreferences prefs = PreferenceManager
-                    .getDefaultSharedPreferences(MiCarSignUp.this);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putString(tag, value);
-            editor.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    protected void showToast(String text) {
-        try {
-            Toast.makeText(MiCarSignUp.this, text,
-                    Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    /**
-     * ********************************** hideLoading **********************************************
-     */
-    public static void hideLoading(final Context context) {
-        try {
-            dialog.dismiss();
-        } catch (Exception e) {
-
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * *********************************** showLoading *********************************************
-     */
-    public static void showLoading(final Context context) {
-
-        Handler h = new Handler();
-        h.post(new Runnable() {
-            public void run() {
-                ballAnim = AnimationUtils.loadAnimation(context,
-                        R.anim.ball_rotatation);
-                dialog = new Dialog(context, android.R.style.Theme_Translucent);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.ball_progress_dialog);
-                dialog.setCancelable(false);
-                final ImageView ivBall = (ImageView) dialog
-                        .findViewById(R.id.ivBall);
-                ivBall.startAnimation(ballAnim);
-                dialog.show();
-            }
-        });
-    }
 
 }
