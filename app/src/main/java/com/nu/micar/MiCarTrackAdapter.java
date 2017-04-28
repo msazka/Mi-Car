@@ -72,6 +72,7 @@ public class MiCarTrackAdapter extends RecyclerView.Adapter<MiCarTrackAdapter.Vi
             );
         }*/
 
+        holder.mySwitch.setChecked(false);
         holder.mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
@@ -86,6 +87,7 @@ public class MiCarTrackAdapter extends RecyclerView.Adapter<MiCarTrackAdapter.Vi
                         extras.putString("regno", registerCarModelList.get(position).getRegistration_no());
                         intent.putExtras(extras);
                         context.startActivity(intent);
+                        ((Activity) context).finish();
                     }
                     else{
                         Toast.makeText(context , "No device id associated with this car", Toast.LENGTH_LONG).show();

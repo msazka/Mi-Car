@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -57,6 +58,10 @@ public class MiCarLocateCarActivity extends ParentActivity implements
     double destlat, destlon;
     String deviceid, regno, address;
     ProgressBar progressBar;
+    Handler h = new Handler();
+    //int delay = 120000; //2 mins
+    int delay = 30000;
+    Runnable runnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +110,25 @@ public class MiCarLocateCarActivity extends ParentActivity implements
                 .addApi(LocationServices.API)
                 .build();
         mGoogleApiClient.connect();
+
+
+
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        h.removeCallbacks(runnable);
+        h.removeCallbacks(null);
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        h.removeCallbacks(runnable);
+        h.removeCallbacks(null);//stop handler when activity not visible
+        super.onDestroy();
     }
 
     @Override
@@ -134,6 +158,20 @@ public class MiCarLocateCarActivity extends ParentActivity implements
         if (mCurrLocationMarker != null) {
             mCurrLocationMarker.remove();
         }
+
+        h.removeCallbacks(runnable);
+        h.removeCallbacks(null);
+
+
+        h.postDelayed(new Runnable() {
+            public void run() {
+                showdistance(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+
+                runnable=this;
+
+                h.postDelayed(runnable, delay);
+            }
+        }, delay);
 
 
         showdistance(location.getLatitude(), location.getLongitude());
@@ -307,8 +345,13 @@ public class MiCarLocateCarActivity extends ParentActivity implements
     private void showdistance(double lat, double lon) {
 
 
-        double dis = calculateDistance(mLastLocation.getLatitude(), mLastLocation.getLongitude(), destlat, destlon);
-        tv_dis.setText("" +  Math.round(dis) * 1000 + " m");
+        Double dis = calculateDistance(mLastLocation.getLatitude(), mLastLocation.getLongitude(), destlat, destlon);
+
+        dis = dis * 1000;
+
+
+        //tv_dis.setText("" +  Math.round(dis) * 1000 + " m");
+        tv_dis.setText("" +  String.format ("%.2f", dis)  + " m");
 
     }
 
@@ -325,6 +368,14 @@ public class MiCarLocateCarActivity extends ParentActivity implements
         return false;
     }
 
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
+    }
 
 
     /*private double meterDistanceBetweenPoints(double lat_a, double lng_a, double lat_b, double lng_b) {

@@ -36,7 +36,7 @@ public class CarUpdateActivity extends ParentActivity {
     public static Animation ballAnim;
     RequestQueue requestQueue;
     List<RegisterCarModel> registerCarModelsList = new ArrayList<RegisterCarModel>();
-    String deviceid;
+    String deviceid,carid;
     EditText input_regno, input_model, input_model_year, input_manufacturer, input_color, input_registration_city, input_engine_capacity, input_engine_type;
 
     @Override
@@ -57,6 +57,8 @@ public class CarUpdateActivity extends ParentActivity {
         requestQueue = Volley.newRequestQueue(CarUpdateActivity.this);
 
         deviceid = getIntent().getStringExtra("deviceid");
+        carid = getIntent().getStringExtra("carid");
+
 
 
 
@@ -106,11 +108,11 @@ public class CarUpdateActivity extends ParentActivity {
                                                           try {
                                                               JSONObject parent = new JSONObject(response);
                                                               int successStatus = parent.getInt("success");
-                                                              String successMessage = parent.getString("message");
+                                                             // String successMessage = parent.getString("message");
 
                                                               if (successStatus == 0) {
 
-                                                                  showToast(successMessage);
+                                                                  showToast("Car not updated error occured");
                                                               } else {
 
                                                                  /* JSONObject dataObject = new JSONObject(parent.getString("data"));
@@ -137,7 +139,7 @@ public class CarUpdateActivity extends ParentActivity {
                                                                   //    mAdapter.notifyDataSetChanged();
 
 
-                                                                  showToast(successMessage);
+                                                                  showToast("Car updated");
 
                                                                   // finish();
 
@@ -185,6 +187,7 @@ public class CarUpdateActivity extends ParentActivity {
                                                   params.put("engine_capacity", input_engine_capacity.getText().toString().trim());
                                                   params.put("engine_type", input_engine_type.getText().toString().trim());
                                                   params.put("device_id", deviceid);
+                                                  params.put("car_id", carid);
 
                                                   return params;
                                               }

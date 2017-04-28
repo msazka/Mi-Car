@@ -2,6 +2,7 @@ package com.nu.micar;
 
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -127,6 +128,9 @@ public class MiCarTrackingonMap extends FragmentActivity implements OnMapReadyCa
     public void onBackPressed() {
         h.removeCallbacks(runnable);
         h.removeCallbacks(null);
+
+        Intent intent = new Intent(MiCarTrackingonMap.this, MainActivity.class);
+        startActivity(intent);
         finish();
     }
 
@@ -399,7 +403,7 @@ public class MiCarTrackingonMap extends FragmentActivity implements OnMapReadyCa
                                 markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.car));
                                 mCurrLocationMarker = mMap.addMarker(markerOptions);
                                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                                mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+                                mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 
                             }
 
