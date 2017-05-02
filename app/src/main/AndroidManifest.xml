@@ -123,6 +123,10 @@
             android:screenOrientation="portrait" />
         <activity android:name=".CarUpdateActivity" />
 
+        <activity
+            android:name=".MiCarEditProfileActivity"
+            />
+
 
     </application>
 

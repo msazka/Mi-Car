@@ -160,6 +160,12 @@ public class MainActivity extends ParentActivity implements NavigationView.OnNav
                 }*/
                 break;
 
+            case R.id.updateprofile:
+                Intent intent = new Intent(this, MiCarEditProfileActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+
         }
         return true;
     }
