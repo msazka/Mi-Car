@@ -86,6 +86,7 @@ public class ParentActivity extends AppCompatActivity {
                         * Math.cos(Math.toRadians(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2));
         double c = (double) (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
         double d = earthRadius * c;
+
         return d;
     }
 

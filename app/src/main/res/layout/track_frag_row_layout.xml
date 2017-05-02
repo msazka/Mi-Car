@@ -41,7 +41,8 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_below="@+id/tv_car_reg_no"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:id="@+id/myswitch"/>
 
             <TextView
                 android:id="@+id/tv_car_model"

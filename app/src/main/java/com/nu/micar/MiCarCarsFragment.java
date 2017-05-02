@@ -98,6 +98,7 @@ public class MiCarCarsFragment extends Fragment {
                                     RegisterCarModel carregmodel = new RegisterCarModel();
 
 
+                                    carregmodel.setId(carsOnject.getString("id"));
                                     carregmodel.setDevice_id(carsOnject.getString("device_id"));
                                     carregmodel.setUser_id(carsOnject.getString("user_id"));
                                     carregmodel.setRegistration_no(carsOnject.getString("registration_no"));

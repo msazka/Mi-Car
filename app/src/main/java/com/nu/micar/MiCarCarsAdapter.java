@@ -1,6 +1,9 @@
 package com.nu.micar;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +31,7 @@ public class MiCarCarsAdapter extends RecyclerView.Adapter<MiCarCarsAdapter.View
     }
 
     @Override
-    public MiCarCarsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(
                 R.layout.cars_frag_row_layout, null);
@@ -40,7 +43,7 @@ public class MiCarCarsAdapter extends RecyclerView.Adapter<MiCarCarsAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(MiCarCarsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
 
 
         holder.tv_car_reg_no.setText(registerCarModelList.get(position).getRegistration_no());
@@ -88,6 +91,24 @@ public class MiCarCarsAdapter extends RecyclerView.Adapter<MiCarCarsAdapter.View
             intent.putExtras(extras);
             context.startActivity(intent);*/
             //((Activity) context).finish();
+
+            Intent intent = new Intent(context, CarUpdateActivity.class);
+            Bundle extras = new Bundle();
+
+            extras.putString("carid", registerCarModelList.get(getAdapterPosition()).getId());
+            extras.putString("regno", registerCarModelList.get(getAdapterPosition()).getRegistration_no());
+            extras.putString("model", registerCarModelList.get(getAdapterPosition()).getModel());
+            extras.putString("modelyear", registerCarModelList.get(getAdapterPosition()).getModel_year());
+            extras.putString("manu", registerCarModelList.get(getAdapterPosition()).getManufacturer());
+            extras.putString("color", registerCarModelList.get(getAdapterPosition()).getColor());
+            extras.putString("regcity", registerCarModelList.get(getAdapterPosition()).getRegistration_city());
+            extras.putString("enginecapacity", registerCarModelList.get(getAdapterPosition()).getEngine_capacity());
+            extras.putString("enginetype", registerCarModelList.get(getAdapterPosition()).getDevice_id());
+            extras.putString("deviceid", registerCarModelList.get(getAdapterPosition()).getDevice_id());
+
+            intent.putExtras(extras);
+            context.startActivity(intent);
+            ((Activity) context).finish();
 
             //  Toast.makeText(RecyclerAdapter.context, "you have clicked Row " + getAdapterPosition(), Toast.LENGTH_LONG).show();
         }

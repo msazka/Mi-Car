@@ -27,7 +27,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MiCarSignIn" />
+        <activity android:name=".MiCarSignIn">
+
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+        </intent-filter>
+
+            /></activity>
         <activity android:name=".MiCarLoginViaFB" />
 
 
@@ -110,6 +116,12 @@
         <activity android:name=".ParentActivity" />
 
         <activity android:name=".MiCarTrackingonMap" />
+
+
+        <activity
+            android:name=".MiCarLocateCarActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".CarUpdateActivity" />
 
 
     </application>

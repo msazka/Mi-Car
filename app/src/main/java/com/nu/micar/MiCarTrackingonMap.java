@@ -2,6 +2,7 @@ package com.nu.micar;
 
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -51,6 +52,7 @@ public class MiCarTrackingonMap extends FragmentActivity implements OnMapReadyCa
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
     Marker mCurrLocationMarker;
+
     LocationRequest mLocationRequest;
     double lat, lon, speed;
     String truckno;
@@ -58,7 +60,8 @@ public class MiCarTrackingonMap extends FragmentActivity implements OnMapReadyCa
     private GoogleMap mMap;
     private ProgressBar progressBar;
     Handler h = new Handler();
-    int delay = 120000; //2 mins
+    //int delay = 120000; //2 mins
+    int delay = 30000;
     Runnable runnable;
 
     @Override
@@ -72,6 +75,12 @@ public class MiCarTrackingonMap extends FragmentActivity implements OnMapReadyCa
         deviceid = getIntent().getStringExtra("deviceid");
         regno = getIntent().getStringExtra("regno");
 
+
+        h.removeCallbacks(runnable);
+        h.removeCallbacks(null);
+
+        carListbyUserId();
+
         h.postDelayed(new Runnable() {
             public void run() {
                 carListbyUserId();
@@ -82,10 +91,6 @@ public class MiCarTrackingonMap extends FragmentActivity implements OnMapReadyCa
             }
         }, delay);
 
-        super.onStart();
-
-        carListbyUserId();
-
 
         /* lat = getIntent().getDoubleExtra("LAT" , 0);
          lon = getIntent().getDoubleExtra("LON" , 0);
@@ -93,7 +98,7 @@ public class MiCarTrackingonMap extends FragmentActivity implements OnMapReadyCa
          truckno = getIntent().getStringExtra("TruckNo");*/
 
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -104,18 +109,50 @@ public class MiCarTrackingonMap extends FragmentActivity implements OnMapReadyCa
 
     }
 
+    /*protected void onStart() {
+        h.postDelayed(new Runnable() {
+            public void run() {
+                carListbyUserId();
+
+                runnable=this;
+
+                h.postDelayed(runnable, delay);
+            }
+        }, delay);
+        super.onStart();
+    }*/
+
+
+
     @Override
     public void onBackPressed() {
         h.removeCallbacks(runnable);
         h.removeCallbacks(null);
+
+        Intent intent = new Intent(MiCarTrackingonMap.this, MainActivity.class);
+        startActivity(intent);
         finish();
     }
 
-    @Override
+    /*@Override
     protected void onPause() {
         h.removeCallbacks(runnable);
         h.removeCallbacks(null);//stop handler when activity not visible
         super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        h.removeCallbacks(runnable);
+        h.removeCallbacks(null);//stop handler when activity not visible
+        super.onStop();
+    }*/
+
+    @Override
+    protected void onDestroy() {
+        h.removeCallbacks(runnable);
+        h.removeCallbacks(null);//stop handler when activity not visible
+        super.onDestroy();
     }
 
     /**
@@ -133,7 +170,7 @@ public class MiCarTrackingonMap extends FragmentActivity implements OnMapReadyCa
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         //Initialize Google Play Services
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)
                     == PackageManager.PERMISSION_GRANTED) {
@@ -350,15 +387,23 @@ public class MiCarTrackingonMap extends FragmentActivity implements OnMapReadyCa
                                 lat = Double.parseDouble(lati);
                                 lon = Double.parseDouble(longi);
 
+                               // mMap.clear();
+
+
+
+                                if (mCurrLocationMarker != null) {
+                                    mCurrLocationMarker.remove();
+                                }
+
                                 LatLng latLng = new LatLng(lat, lon);
                                 MarkerOptions markerOptions = new MarkerOptions();
                                 markerOptions.position(latLng);
                                 markerOptions.title(regno + " Latitude = " + lat + " Longitude = " + lon);
                               //  markerOptions.title("truckno=" + truckno + " speed=" + speed + " Lat= " + lat + " Lon= " + lon);
-                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.truck_moving));
+                                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.car));
                                 mCurrLocationMarker = mMap.addMarker(markerOptions);
                                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                                mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+                                mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 
                             }
 

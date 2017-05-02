@@ -12,40 +12,48 @@
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
         android:orientation="horizontal"
         card_view:cardCornerRadius="5dp"
-        >
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
 
-        <TextView
-            android:id="@+id/tv_car_reg_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="seventh"
-            android:textSize="20sp"></TextView>
+            <TextView
+                android:id="@+id/tv_car_reg_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="seventh"
+                android:textSize="20sp"></TextView>
 
-        <TextView
-            android:id="@+id/tv_car_manufacturer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_car_reg_no"
-            android:text="seventh"
-            android:textSize="20sp"></TextView>
+            <TextView
+                android:id="@+id/tv_car_manufacturer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_car_reg_no"
+                android:text="seventh"
+                android:textSize="20sp"></TextView>
 
-        <TextView
-            android:id="@+id/tv_car_model"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_car_manufacturer"
-            android:text="seventh"
-            android:textSize="20sp"></TextView>
+            <ImageView
+                android:id="@+id/myswitch"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_car_reg_no"
+                android:background="@drawable/rightarrow" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_car_model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_car_manufacturer"
+                android:text="seventh"
+                android:textSize="20sp"></TextView>
+
+        </RelativeLayout>
 
     </android.support.v7.widget.CardView>
 

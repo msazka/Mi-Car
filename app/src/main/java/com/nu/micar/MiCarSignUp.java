@@ -80,11 +80,11 @@ public class MiCarSignUp extends ParentActivity {
                                 JSONObject dataObject = new JSONObject(parent.getString("data"));
                                 JSONObject profileObject = new JSONObject(dataObject.getString("profile"));
 
-                               /* sharedPrefData("username", profileObject.getString("samia"));
+                                sharedPrefData("username", profileObject.getString("username"));
                                 sharedPrefData("email", profileObject.getString("email"));
                                 sharedPrefData("password", profileObject.getString("password"));
                                 sharedPrefData("account_type", profileObject.getString("account_type"));
-                                sharedPrefData("session_token", profileObject.getString("session_token"));*/
+                                sharedPrefData("session_token", profileObject.getString("session_token"));
 
                                 showToast(successMessage);
 

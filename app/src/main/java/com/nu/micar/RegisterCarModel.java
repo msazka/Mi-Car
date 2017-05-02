@@ -31,7 +31,7 @@ public class RegisterCarModel {
 }*/
 
 
-      String device_id, user_id, registration_no, registration_city, model, model_year, manufacturer, engine_capacity, engine_type, color, date_created, date_modified;
+      String id,device_id, user_id, registration_no, registration_city, model, model_year, manufacturer, engine_capacity, engine_type, color, date_created, date_modified;
 
 
     public String getDevice_id() {
@@ -130,5 +130,12 @@ public class RegisterCarModel {
         this.date_modified = date_modified;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
 

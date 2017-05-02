@@ -1,273 +1,192 @@
 package com.nu.micar;
 
-import android.*;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.os.Build;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
-public class MiCarLocateFragment extends Fragment implements OnMapReadyCallback,
-        GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener,
-        LocationListener {
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-    private GoogleMap mMap;
-    GoogleApiClient mGoogleApiClient;
-    Location mLastLocation;
-    Marker mCurrLocationMarker;
-    LocationRequest mLocationRequest;
-    double lat,lon,speed;
-    String truckno;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+public class MiCarLocateFragment extends Fragment {
+
+    RecyclerView mRecyclerView;
+    List<RegisterCarModel> registerCarModelsList = new ArrayList<RegisterCarModel>();
+    private RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerView.Adapter mAdapter;
+    private ProgressBar progressBar;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_maps, container, false);
+
+        return inflater.inflate(R.layout.fragment_cars_list, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            checkLocationPermission();
-        }
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-    }
 
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
 
+        mRecyclerView.setHasFixedSize(true);
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
-        //Initialize Google Play Services
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(getActivity(),
-                    android.Manifest.permission.ACCESS_FINE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
-                buildGoogleApiClient();
-                mMap.setMyLocationEnabled(true);
-            }
-        }
-        else {
-            buildGoogleApiClient();
-            mMap.setMyLocationEnabled(true);
-        }
-    }
+        registerCarModelsList.clear();
 
-    protected synchronized void buildGoogleApiClient() {
-        mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
-        mGoogleApiClient.connect();
-    }
-
-    @Override
-    public void onConnected(Bundle bundle) {
-
-        mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(1000);
-        mLocationRequest.setFastestInterval(1000);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-        if (ContextCompat.checkSelfPermission(getActivity(),
-                android.Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
-        }
-
-
-
-
-
-
-        /*if(speed == 0.0){
-
-            LatLng latLng= new LatLng(lat, lon);
-            MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(latLng);
-            // markerOptions.title("Current Truck " + "Latitude = " + lat + " Longitude = " + lon);
-            markerOptions.title("truckno="+truckno+" speed=" + speed +" Lat=" + lat + " Lon=" + lon);
-            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.truck_stop));
-            mCurrLocationMarker = mMap.addMarker(markerOptions);
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
-        }
-
-        else{
-
-            LatLng latLng = new LatLng(lat, lon);
-            MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(latLng);
-            // markerOptions.title("Current Truck " + "Latitude = " + lat + " Longitude = " + lon);
-            markerOptions.title("truckno="+truckno+" speed=" + speed +" Lat= " + lat + " Lon= " + lon);
-            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.truck_moving));
-            mCurrLocationMarker = mMap.addMarker(markerOptions);
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
-
-        }*/
-
-
-       /* LatLng latLng = new LatLng(lat, lon);
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
-        markerOptions.title("Current Truck "+ "Latitude = " + lat + " Longitude = " + lon);
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
-        mCurrLocationMarker = mMap.addMarker(markerOptions);
-
-        //move map camera
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));*/
+        carListbyUserId(view);
 
     }
 
-    @Override
-    public void onConnectionSuspended(int i) {
 
-    }
+    private void carListbyUserId(View view) {
 
-    @Override
-    public void onLocationChanged(Location location) {
+        //hideSoftKeyboard(view);
+        //showLoading(DesActivity.this);
+        progressBar.setVisibility(View.VISIBLE);
 
-//        mLastLocation = location;
-//        if (mCurrLocationMarker != null) {
-//            mCurrLocationMarker.remove();
-//        }
+        String url = getResources().getString(R.string.webservicesurl);
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
 
-        //Place current location marker
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
-        markerOptions.title("Current Position");
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
-        mCurrLocationMarker = mMap.addMarker(markerOptions);
-
-        //move map camera
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+                        progressBar.setVisibility(View.GONE);
 
 
-//        LatLng latLng = new LatLng(lat, lon);
-//        MarkerOptions markerOptions = new MarkerOptions();
-//        markerOptions.position(latLng);
-//        markerOptions.title("Current Truck "+ "Latitude = " + lat + " Longitude = " + lon);
-//        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
-//        mCurrLocationMarker = mMap.addMarker(markerOptions);
-//
-//        //move map camera
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-//        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+                        try {
+                            JSONObject parent = new JSONObject(response);
+                            int successStatus = parent.getInt("success");
+                            //String successMessage = parent.getString("message");
 
-        //stop location updates
-        if (mGoogleApiClient != null) {
-            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
-        }
+                            if (successStatus == 0) {
 
-    }
+                                Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_LONG);
+                            } else {
 
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-
-    }
-
-    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
-    public boolean checkLocationPermission(){
-        if (ContextCompat.checkSelfPermission(getActivity(),
-                android.Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-
-            // Asking user if explanation is needed
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                    android.Manifest.permission.ACCESS_FINE_LOCATION)) {
-
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-
-                //Prompt the user once explanation has been shown
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_LOCATION);
+                                JSONArray carsArray = new JSONArray(parent.getString("cars_found"));
 
 
-            } else {
-                // No explanation needed, we can request the permission.
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_LOCATION);
-            }
-            return false;
-        } else {
-            return true;
-        }
-    }
+                                for (int i = 0; i <= carsArray.length() - 1; i++) {
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_LOCATION: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                                    JSONObject carsOnject = carsArray.getJSONObject(i);
+                                    RegisterCarModel carregmodel = new RegisterCarModel();
 
-                    // permission was granted. Do the
-                    // contacts-related task you need to do.
-                    if (ContextCompat.checkSelfPermission(getActivity(),
-                            android.Manifest.permission.ACCESS_FINE_LOCATION)
-                            == PackageManager.PERMISSION_GRANTED) {
 
-                        if (mGoogleApiClient == null) {
-                            buildGoogleApiClient();
+                                    carregmodel.setDevice_id(carsOnject.getString("device_id"));
+                                    carregmodel.setUser_id(carsOnject.getString("user_id"));
+                                    carregmodel.setRegistration_no(carsOnject.getString("registration_no"));
+                                    carregmodel.setRegistration_city(carsOnject.getString("registration_city"));
+                                    carregmodel.setModel(carsOnject.getString("model"));
+                                    carregmodel.setModel_year(carsOnject.getString("model_year"));
+                                    carregmodel.setManufacturer(carsOnject.getString("manufacturer"));
+                                    carregmodel.setEngine_capacity(carsOnject.getString("engine_capacity"));
+                                    carregmodel.setEngine_type(carsOnject.getString("engine_type"));
+                                    carregmodel.setColor(carsOnject.getString("color"));
+                                    carregmodel.setDate_created(carsOnject.getString("date_created"));
+                                    carregmodel.setDate_modified(carsOnject.getString("date_modified"));
+
+
+                                    registerCarModelsList.add(carregmodel);
+
+                                }
+
+                                mAdapter.notifyDataSetChanged();
+
+                                /*JSONObject dataObject = new JSONObject(parent.getString("data"));
+                                JSONObject profileObject = new JSONObject(dataObject.getString("profile"));*/
+
+
+                                //    mAdapter.notifyDataSetChanged();
+
+
+                                // Toast.makeText(getActivity(),successMessage,Toast.LENGTH_LONG);
+
+                                //sharedPrefData("IsLogin", "true");
+
+                                                                  /*Intent schoolActivityIntent = new Intent(DesActivity.this, MainActivity.class);
+                                                                  startActivity(schoolActivityIntent);
+                                                                  finish();*/
+
+                            }
+
+                        } catch (Exception e) {
+
+                            e.printStackTrace();
+
                         }
-                        mMap.setMyLocationEnabled(true);
+
+
                     }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
 
-                } else {
-
-                    // Permission denied, Disable the functionality that depends on this permission.
-                    Toast.makeText(getActivity(), "permission denied", Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
+                        // error
+                        //    Log.d("Error.Response", response );
+                    }
                 }
-                return;
-            }
+        ) {
 
-            // other 'case' lines to check for other permissions this app might request.
-            // You can add here other case statements according to your requirement.
-        }
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("method", "getCarsByUserId");
+                params.put("session_token", getSharedPrefData("session_token"));
+                params.put("page_no", "1");
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(postRequest);
+
+        mAdapter = new MiCarLocateCarAdapter(getActivity(), registerCarModelsList);
+        mRecyclerView.setAdapter(mAdapter);
+
     }
+
+
+    /**
+     * ******************************** getSharedPrefData ******************************************
+     */
+    public String getSharedPrefData(String tag) {
+        String res = "";
+        try {
+            SharedPreferences prefs = PreferenceManager
+                    .getDefaultSharedPreferences(getActivity());
+            res = prefs.getString(tag, "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
 }

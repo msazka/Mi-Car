@@ -22,17 +22,24 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.facebook.login.LoginManager;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends ParentActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ViewPager viewPager;
     private DrawerLayout drawer;
     private TabLayout tabLayout;
-    private String[] pageTitle = {"Track", "Locate", "Cars"};
+    private String[] pageTitle = {"Track", "Lock", "Locate", "Cars"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(!haveNetworkConnection(MainActivity.this)){
+            showToast("No Internet Connection");
+        }
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -48,7 +55,7 @@ public class MainActivity extends ParentActivity implements NavigationView.OnNav
 
         //setting Tab layout (number of Tabs = number of ViewPager pages)
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             tabLayout.addTab(tabLayout.newTab().setText(pageTitle[i]));
         }
 
@@ -66,7 +73,7 @@ public class MainActivity extends ParentActivity implements NavigationView.OnNav
 
         //change Tab selection when swipe ViewPager
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        viewPager.setOffscreenPageLimit(3);
+        viewPager.setOffscreenPageLimit(4);
 
         //change ViewPager page when tab selected
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -94,17 +101,23 @@ public class MainActivity extends ParentActivity implements NavigationView.OnNav
         if (id == R.id.fr1) {
             viewPager.setCurrentItem(0);
         } else if (id == R.id.fr2) {
-            viewPager.setCurrentItem(1);
-        } else if (id == R.id.fr3) {
             viewPager.setCurrentItem(2);
+        } else if (id == R.id.fr3) {
+            viewPager.setCurrentItem(3);
         } else if (id == R.id.signout) {
 
             sharedPrefData("IsLogin", "false");
+
+            FirebaseAuth.getInstance().signOut();
+            LoginManager.getInstance().logOut();
 
             Intent intent = new Intent(this, MiCarMainActivity.class);
         //  intent.putExtra("string", "Go to other Activity by NavigationView item cliked!");
             startActivity(intent);
             finish();
+        }
+        else if (id == R.id.fr4) {
+            viewPager.setCurrentItem(1);
         }
 
 
