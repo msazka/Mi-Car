@@ -13,4 +13,12 @@
         app:showAsAction="always"
         />
 
+    <item
+        android:id="@+id/updateprofile"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:orderInCategory="1"
+        android:title="update profile"
+        app:showAsAction="always"
+        />
+
 </menu>

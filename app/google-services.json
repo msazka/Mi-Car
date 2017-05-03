@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "939844446012",
-    "firebase_url": "https://micar-16f72.firebaseio.com",
-    "project_id": "micar-16f72",
-    "storage_bucket": "micar-16f72.appspot.com"
+    "project_number": "121441810524",
+    "firebase_url": "https://micar2-280fc.firebaseio.com",
+    "project_id": "micar2-280fc",
+    "storage_bucket": "micar2-280fc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:939844446012:android:4ef589d6f5ff433d",
+        "mobilesdk_app_id": "1:121441810524:android:4ef589d6f5ff433d",
         "android_client_info": {
           "package_name": "com.nu.micar"
         }
       },
       "oauth_client": [
         {
-          "client_id": "939844446012-udm0eh36bhbko87tvgsc0ah0aib18mm7.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.nu.micar",
-            "certificate_hash": "60f7357a7eb95ac794d8e99ec42c380aeb9da566"
-          }
-        },
-        {
-          "client_id": "939844446012-9es6e9otj5rslm5qjcka21ispsni3d1d.apps.googleusercontent.com",
+          "client_id": "121441810524-8i54h9k8o279orou2mqi8jb8mei6i1iv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBPbHR7tvHRadIBer5se_Z0X0a6d_DkvLk"
+          "current_key": "AIzaSyD0QOTd5R5Hl-UGf0_7TWVQabXTwKDybKg"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "939844446012-9es6e9otj5rslm5qjcka21ispsni3d1d.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
