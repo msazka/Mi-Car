@@ -7,8 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,9 +70,6 @@ public class MiCarLocateCarAdapter extends RecyclerView.Adapter<MiCarLocateCarAd
         }*/
 
 
-
-
-
     }
 
     @Override
@@ -104,17 +99,15 @@ public class MiCarLocateCarAdapter extends RecyclerView.Adapter<MiCarLocateCarAd
         @Override
         public void onClick(View v) {
 
-            if(!registerCarModelList.get(getAdapterPosition()).getDevice_id().equals("")){
+            if (!registerCarModelList.get(getAdapterPosition()).getDevice_id().equals("")) {
                 Intent intent = new Intent(context, TestingDistanceMaps.class);
                 Bundle extras = new Bundle();
                 extras.putString("deviceid", registerCarModelList.get(getAdapterPosition()).getDevice_id());
                 extras.putString("regno", registerCarModelList.get(getAdapterPosition()).getRegistration_no());
                 intent.putExtras(extras);
                 context.startActivity(intent);
-            }
-
-            else{
-                Toast.makeText(context , "No device id associated with this car", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(context, "No device id associated with this car", Toast.LENGTH_LONG).show();
 
             }
 
