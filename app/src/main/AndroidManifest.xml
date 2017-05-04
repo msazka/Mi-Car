@@ -117,6 +117,8 @@
 
         <activity android:name=".MiCarTrackingonMap" />
 
+        <activity android:name=".TestingDistanceMaps" />
+
 
         <activity
             android:name=".MiCarLocateCarActivity"

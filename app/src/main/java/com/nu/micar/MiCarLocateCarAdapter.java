@@ -105,7 +105,7 @@ public class MiCarLocateCarAdapter extends RecyclerView.Adapter<MiCarLocateCarAd
         public void onClick(View v) {
 
             if(!registerCarModelList.get(getAdapterPosition()).getDevice_id().equals("")){
-                Intent intent = new Intent(context, MiCarLocateCarActivity.class);
+                Intent intent = new Intent(context, TestingDistanceMaps.class);
                 Bundle extras = new Bundle();
                 extras.putString("deviceid", registerCarModelList.get(getAdapterPosition()).getDevice_id());
                 extras.putString("regno", registerCarModelList.get(getAdapterPosition()).getRegistration_no());
